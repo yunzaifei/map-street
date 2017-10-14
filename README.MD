@@ -5,8 +5,6 @@
 
 ## 引用
 - Knockout JS
-- Bootstrap.css
-- Jquery
 - Google Maps API
 - Foursquare API
 
