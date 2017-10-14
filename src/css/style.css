@@ -1,0 +1,36 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+#menu{
+    width: 20%;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+#menu-btn{    
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+.btn-show{
+    position: absolute;
+    top: 8px;
+    right: 5px;
+}
+.btn-hide{
+    position: fixed;
+    top: 10px;
+    left: 2px;
+}
+#filter{
+    margin: auto;
+    width: 100%;
+}
+#map {
+    width: 80%;
+    height: 100%;
+    float: left;
+}
