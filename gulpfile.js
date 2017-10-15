@@ -5,23 +5,24 @@ var rename = require('gulp-rename');
 var connect = require('gulp-connect');
 
 gulp.task('build', function(){
-    del('dist').then(function(){
-        gulp.src('node_modules/knockout/build/output/knockout-latest.js')
-            .pipe(rename('knockout.js'))
-            .pipe(gulp.dest('dist/js/lib'));
-        gulp.src('src/**')
-            .pipe(gulp.dest('dist'));
-    })
+    del('dist').then(moveFile)
 })
 
 gulp.task('file', function(){
+    moveFile();
+    return null;
+})
+
+function moveFile(){    
     gulp.src('node_modules/knockout/build/output/knockout-latest.js')
         .pipe(rename('knockout.js'))
         .pipe(gulp.dest('dist/js/lib'));
+    gulp.src('node_modules/axios/dist/axios.min.js')
+        .pipe(rename('axios.js'))
+        .pipe(gulp.dest('dist/js/lib'));
     gulp.src('src/**')
         .pipe(gulp.dest('dist'));
-    return null;
-})
+}
 
 gulp.task('server', ['file'], function(){
     connect.server({
