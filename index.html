@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>街区地图</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="menu" data-bind="if: menuVisable()">
+        <div style="padding: 5px 10px">
+            <h3>街区地图</h3>
+            <input type="text" name="" id="filter" data-bind="value: filter, valueUpdate: 'afterkeydown'">
+            <ul id="sider_list" data-bind="foreach: filteredLots">
+                <li data-bind="text: title, click: $parent.markLot">
+                </li>
+              </ul>
+        </div>
+    </div>
+    <img id="menu-btn" src="images/menu.png" data-bind="click: toggleMenu, css: mapClass">
+    <div id="map" data-bind="css: {'map-full': !menuVisable()}"></div>
+
+    <script src="js/lib/knockout.js"></script>
+    <script src="js/lib/axios.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/app.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIPfW8T7g0N9X0UBTMCC7XsC-111WVqkA&callback=initApp" onerror="mapError()"></script>
+</body>
+</html>
