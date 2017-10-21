@@ -11,7 +11,7 @@
         <div style="padding: 5px 10px">
             <h3>街区地图</h3>
             <input type="text" name="" id="filter" data-bind="value: filter, valueUpdate: 'afterkeydown'">
-            <ul class="sider-list" data-bind="foreach: filteredLots">
+            <ul id="sider_list" data-bind="foreach: filteredLots">
                 <li data-bind="text: title, click: $parent.markLot">
                 </li>
               </ul>

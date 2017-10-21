@@ -7,6 +7,7 @@
 - Knockout JS
 - Google Maps API
 - Foursquare API
+- axios
 
 ## 安装运行
 ```

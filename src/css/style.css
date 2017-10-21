@@ -9,9 +9,6 @@ html, body{
     width: 20%;
     height: 100%;
 }
-.menu-hide{
-    width: 0 !important;
-}
 #menu-btn{
     position: absolute;
     left: 17%;    
@@ -20,12 +17,13 @@ html, body{
     cursor: pointer;
     z-index: 10;
     opacity: 0.5;
+    transition: all 0.5s ease;
 }
 .btn-hide{
     left: 2px !important;
 }
 #filter{
-    margin: auto;
+    margin: 0 1px;
     width: 100%;
 }
 #map {
@@ -33,8 +31,42 @@ html, body{
     width: 80%;
     height: 100%;
     left: 20%;
+    transition: width 0.5s ease, left 0.5s ease;
 }
 .map-full{
     left: 0 !important;
     width: 100% !important;
 }
+#sider_list{
+    list-style-type: none;
+    padding: 0;
+}
+#sider_list li:hover {
+    background-color: #ddd;
+    color: black;
+}
+#sider_list li{
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #menu {
+      width: 30%;
+    }
+    #menu-btn{
+        left: 23%;
+    }
+    #menu h3 {
+      font-size: 16px;
+    }
+    #sider_list li {
+      font-size: 12px;
+    }
+    #map {
+      width: 70%;
+      left: 30%;
+    }
+  }

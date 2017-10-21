@@ -5,43 +5,43 @@ var markers = [];
  */
 var locations = [
   {
-    title: '天安门广场',
-    pinyin: 'Tian An Men Guang Chang',
+    title: '五一广场',
+    pinyin: 'Wu Yi Guang Chang',
     position: {
-      lat: 39.9063748,
-      lng: 116.3925044
+      lat: 37.860819,
+      lng: 112.574535
     }
   },
   {
-    title: '奥林匹克公园',
-    pinyin: 'Ao Lin Pi Ke Gong Yuan',
+    title: '龙潭公园',
+    pinyin: 'Longtan Park',
     position: {
-      lat: 39.9942851,
-      lng: 116.3915031
+      lat: 37.884749,
+      lng: 112.554009
     }
   },
   {
-    title: '颐和园',
-    pinyin: 'Yi He Yuan',
+    title: '柳巷食品街',
+    pinyin: 'Liuxiang Food Street',
     position: {
-      lat: 39.9892384,
-      lng: 116.232084212
+      lat: 37.869010,
+      lng: 112.562318
     }
   },
   {
-    title: '大观园',
-    pinyin: 'Da Guan Yuan',
+    title: '晋祠公园',
+    pinyin: 'Jinci Temple',
     position: {
-      lat: 39.8712889,
-      lng: 116.353961517
+      lat: 37.706952,
+      lng: 112.447634
     }
   },
   {
-    title: '故宫博物院',
-    pinyin: 'Gu Gong Bo Wu Yuan',
+    title: '学府公园',
+    pinyin: 'Xue Fu Gong Yuan',
     position: {
-      lat: 39.9101321,
-      lng: 116.363471212
+      lat: 37.812106,
+      lng: 112.573411
     }
   }
 ]
@@ -72,10 +72,9 @@ function setMarkers(locations){
     markers.push(marker);
     bounds.extend(loc.position);
     marker.addListener('click', function(){
-      requestApi(this.title, function(data){
-        var feature = data.geocode.feature;
-        var displayContent = feature.highlightedName + '<br><b>En:</b> ' + feature.name;
-        populateInfoWindow(this, displayContent);
+      var self = this;
+      requestApi(self, function(data){
+        populateInfoWindow(self, data);
       })
     });
   }
@@ -115,14 +114,8 @@ function populateInfoWindow(marker, displayContent) {
   if (infowindow.marker != marker) {
     infowindow.marker = marker;
     infowindow.setContent(displayContent);
-    console.log('sss!');
-    try{
     infowindow.open(map, marker);
-  }catch(err){
-    console.log('err:'+err);
-  }
     // Make sure the marker property is cleared if the infowindow is closed.
-    console.log('end!');
     infowindow.addListener('closeclick', function () {
       infowindow.setMarker = null;
     });

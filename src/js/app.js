@@ -39,18 +39,20 @@ function initApp(){
 }
 /**
  * 获取 foursquare 数据
- * @param { String } location
+ * @param { Object } location
  */
 function requestApi(location, cb) {
   var clientId = 'OZZCNKKL5HB1R52BAPET3N32Y3YZ40TR2XG0W53JTH3C00GH';
   var clientSecret = 'E4TWWGI4NXBFG1IIRH3GRKREAQNKGE1FZDGL2VJJDTHRWGVF';
   var url = 'https://api.foursquare.com/v2/venues/search?v=20161016';
-  var requestUrl = url + '&near=' + location + '&client_id=' + clientId + '&client_secret=' + clientSecret;
+  var requestUrl = url + '&client_id=' + clientId + '&client_secret=' + clientSecret 
+                      + '&query=' + location.title + "&ll=" + location.position.lat() + "," + location.position.lng();
+  console.log(requestUrl);
   axios.get(requestUrl)
     .then(function (res) {
       console.log(res);
-      console.log(res.data.response);
-      cb(res.data.response);
+      var address = res.data.response.venues[0].location.formattedAddress.reverse().join(",") + "," + location.title;
+      cb(address);
     })
     .catch(function(err){
       alert('获取api错误：' + err);
