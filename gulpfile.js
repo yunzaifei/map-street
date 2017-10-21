@@ -5,7 +5,7 @@ var rename = require('gulp-rename');
 var connect = require('gulp-connect');
 
 gulp.task('build', function(){
-    del('dist').then(moveFile)
+    del(['dist/!(.git)']).then(moveFile)
 })
 
 gulp.task('file', function(){
