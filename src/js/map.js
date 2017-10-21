@@ -108,18 +108,21 @@ function showMarker(marker, index){
  * @param { Object } infowindow InfoWindow对象
  */
 function populateInfoWindow(marker, displayContent) {
-  console.log('start!');
   if (!marker.map) {
     marker.setMap(map);
   }
-  try{
   // Check to make sure the infowindow is not already opened on this marker.
   if (infowindow.marker != marker) {
     infowindow.marker = marker;
-    console.log('end!');
     infowindow.setContent(displayContent);
+    console.log('sss!');
+    try{
     infowindow.open(map, marker);
+  }catch(err){
+    console.log('err:'+err);
+  }
     // Make sure the marker property is cleared if the infowindow is closed.
+    console.log('end!');
     infowindow.addListener('closeclick', function () {
       infowindow.setMarker = null;
     });
@@ -130,9 +133,6 @@ function populateInfoWindow(marker, displayContent) {
       marker.setAnimation(null);
     }, 1400)
   }
-}catch(err){
-  console.log('err:'+err);
-}
 }
 /**
  * Google Map Error Handler
